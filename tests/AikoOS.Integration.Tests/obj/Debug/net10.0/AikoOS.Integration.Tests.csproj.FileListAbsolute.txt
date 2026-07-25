@@ -125,3 +125,9 @@ D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\obj\Debug\net10.0\refint\Aiko
 D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\obj\Debug\net10.0\AikoOS.Integration.Tests.pdb
 D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\obj\Debug\net10.0\AikoOS.Integration.Tests.genruntimeconfig.cache
 D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\obj\Debug\net10.0\ref\AikoOS.Integration.Tests.dll
+D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\bin\Debug\net10.0\NAudio.dll
+D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\bin\Debug\net10.0\NAudio.Asio.dll
+D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\bin\Debug\net10.0\NAudio.Core.dll
+D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\bin\Debug\net10.0\NAudio.Midi.dll
+D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\bin\Debug\net10.0\NAudio.Wasapi.dll
+D:\Downloads\AikoOS\tests\AikoOS.Integration.Tests\bin\Debug\net10.0\NAudio.WinMM.dll

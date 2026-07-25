@@ -15,6 +15,7 @@ using AikoOS.Behavior.Rules;
 using AikoOS.Behavior.Scheduler;
 using AikoOS.Behavior.Services;
 using AikoOS.Behavior.State;
+using AikoOS.Behavior.Emotion;
 using AikoOS.Core.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -108,6 +109,8 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<
             BehaviorDebugService>();
+
+        services.AddSingleton<IEmotionEngine, EmotionEngine>();
 
         services.AddSingleton<
             IMoodManager,

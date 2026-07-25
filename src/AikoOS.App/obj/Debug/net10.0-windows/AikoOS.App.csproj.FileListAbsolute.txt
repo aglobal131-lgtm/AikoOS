@@ -831,3 +831,10 @@ D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\refint\AikoOS.App.d
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\AikoOS.App.pdb
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\AikoOS.App.genruntimeconfig.cache
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\ref\AikoOS.App.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\NAudio.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\NAudio.Asio.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\NAudio.Core.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\NAudio.Midi.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\NAudio.Wasapi.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\NAudio.WinForms.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\NAudio.WinMM.dll

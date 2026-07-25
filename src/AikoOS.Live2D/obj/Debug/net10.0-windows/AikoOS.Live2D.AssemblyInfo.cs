@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AikoOS.Live2D")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75510f1511153eeba4e1da23d7704feb40da2aec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08b222c1b8c9a7e799938c209021030f8ee0c3a6")]
 [assembly: System.Reflection.AssemblyProductAttribute("AikoOS.Live2D")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AikoOS.Live2D")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
