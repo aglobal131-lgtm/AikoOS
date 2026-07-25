@@ -1,0 +1,16 @@
+D:\Downloads\AikoOS\src\AikoOS.AI\bin\Debug\net10.0\AikoOS.AI.deps.json
+D:\Downloads\AikoOS\src\AikoOS.AI\bin\Debug\net10.0\AikoOS.AI.dll
+D:\Downloads\AikoOS\src\AikoOS.AI\bin\Debug\net10.0\AikoOS.AI.pdb
+D:\Downloads\AikoOS\src\AikoOS.AI\bin\Debug\net10.0\AikoOS.Core.dll
+D:\Downloads\AikoOS\src\AikoOS.AI\bin\Debug\net10.0\AikoOS.Core.pdb
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.csproj.AssemblyReference.cache
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.AssemblyInfoInputs.cache
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.AssemblyInfo.cs
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.csproj.CoreCompileInputs.cache
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.sourcelink.json
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.csproj.Up2Date
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.dll
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\refint\AikoOS.AI.dll
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\AikoOS.AI.pdb
+D:\Downloads\AikoOS\src\AikoOS.AI\obj\Debug\net10.0\ref\AikoOS.AI.dll

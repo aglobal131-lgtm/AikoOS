@@ -1,0 +1,12 @@
+D:\Downloads\AikoOS\src\AikoOS.Core\bin\Debug\net10.0\AikoOS.Core.deps.json
+D:\Downloads\AikoOS\src\AikoOS.Core\bin\Debug\net10.0\AikoOS.Core.dll
+D:\Downloads\AikoOS\src\AikoOS.Core\bin\Debug\net10.0\AikoOS.Core.pdb
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\AikoOS.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\AikoOS.Core.AssemblyInfoInputs.cache
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\AikoOS.Core.AssemblyInfo.cs
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\AikoOS.Core.csproj.CoreCompileInputs.cache
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\AikoOS.Core.sourcelink.json
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\AikoOS.Core.dll
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\refint\AikoOS.Core.dll
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\AikoOS.Core.pdb
+D:\Downloads\AikoOS\src\AikoOS.Core\obj\Debug\net10.0\ref\AikoOS.Core.dll

@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "outDir": "./dist",
+    "rootDir": "../../..",
+
+    "removeComments": true,
+    "sourceMap": true,
+
+    "paths": {
+      "@framework/*": [
+        "../../../Framework/src/*"
+      ]
+    },
+
+    "noImplicitAny": true,
+    "useUnknownInCatchVariables": false,
+
+    "strict": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "noUncheckedIndexedAccess": false,
+
+    "skipLibCheck": true
+  },
+
+  "include": [
+    "src/**/*.ts",
+    "../../../Framework/src/**/*.ts",
+    "../../../Core/*.ts"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

@@ -1,0 +1,46 @@
+﻿<Application x:Class="AikoOS.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:AikoOS.App.ViewModels"
+             xmlns:views="clr-namespace:AikoOS.App.Views"
+             xmlns:converters="clr-namespace:AikoOS.App.Converters"
+             xmlns:brainViewModels="clr-namespace:AikoOS.App.ViewModels.Brain"
+             xmlns:brainViews="clr-namespace:AikoOS.App.Views.Brain"
+             ShutdownMode="OnExplicitShutdown">
+
+    <Application.Resources>
+
+        <BooleanToVisibilityConverter
+            x:Key="BooleanToVisibilityConverter"/>
+
+        <converters:InverseBooleanConverter
+            x:Key="InverseBooleanConverter"/>
+
+        <converters:BooleanToHorizontalAlignmentConverter
+            x:Key="MessageAlignmentConverter"/>
+
+        <converters:BooleanToMessageBackgroundConverter
+            x:Key="MessageBackgroundConverter"/>
+
+        <DataTemplate DataType="{x:Type viewModels:MemoryViewModel}">
+            <views:MemoryPage/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
+            <views:HomeView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:ChatViewModel}">
+            <views:ChatView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
+            <views:SettingsPage/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type brainViewModels:BrainInputViewModel}">
+            <brainViews:BrainView/>
+        </DataTemplate>
+
+    </Application.Resources>
+</Application>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5tbfB/g24WA=",
+  "success": true,
+  "projectFilePath": "D:\\Downloads\\AikoOS\\src\\AikoOS.Live2D\\AikoOS.Live2D.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aglob\\.nuget\\packages\\microsoft.web.webview2\\1.0.4078.44\\microsoft.web.webview2.1.0.4078.44.nupkg.sha512"
+  ],
+  "logs": []
+}
