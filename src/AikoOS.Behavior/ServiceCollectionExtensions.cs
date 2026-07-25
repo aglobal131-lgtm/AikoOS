@@ -37,6 +37,8 @@ public static class ServiceCollectionExtensions
             IBehaviorEventBus,
             BehaviorEventBus>();
 
+        services.AddSingleton<CharacterState>();
+
         services.AddSingleton<
             IBehaviorEngine,
             BehaviorEngine>();

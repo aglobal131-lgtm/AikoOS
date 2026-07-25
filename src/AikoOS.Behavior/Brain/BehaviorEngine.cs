@@ -8,17 +8,22 @@ namespace AikoOS.Behavior.Brain;
 
 public sealed class BehaviorEngine : IBehaviorEngine
 {
-    private readonly IEnumerable<IBehaviorRule> _rules;
+    private readonly IReadOnlyList<IBehaviorRule> _rules;
     private readonly IActionQueue _actionQueue;
-
-    private readonly CharacterState _state = new();
+    private readonly CharacterState _state;
 
     public BehaviorEngine(
         IEnumerable<IBehaviorRule> rules,
-        IActionQueue actionQueue)
+        IActionQueue actionQueue,
+        CharacterState state)
     {
-        _rules = rules;
+        ArgumentNullException.ThrowIfNull(rules);
+        ArgumentNullException.ThrowIfNull(actionQueue);
+        ArgumentNullException.ThrowIfNull(state);
+
+        _rules = rules.ToArray();
         _actionQueue = actionQueue;
+        _state = state;
     }
 
     public async Task HandleEventAsync(
@@ -27,8 +32,12 @@ public sealed class BehaviorEngine : IBehaviorEngine
     {
         ArgumentNullException.ThrowIfNull(behaviorEvent);
 
-        foreach (var rule in _rules)
+        cancellationToken.ThrowIfCancellationRequested();
+
+        foreach (IBehaviorRule rule in _rules)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             if (!rule.CanHandle(behaviorEvent, _state))
             {
                 continue;
@@ -40,11 +49,13 @@ public sealed class BehaviorEngine : IBehaviorEngine
                     _state,
                     cancellationToken);
 
-            if (action is not null)
+            if (action is null)
             {
-                _actionQueue.Enqueue(action);
-                break;
+                continue;
             }
+
+            _actionQueue.Enqueue(action);
+            break;
         }
     }
 }

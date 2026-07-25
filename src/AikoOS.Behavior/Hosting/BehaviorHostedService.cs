@@ -1,7 +1,7 @@
+using AikoOS.Behavior.Brain;
 using AikoOS.Behavior.Bus;
 using AikoOS.Behavior.Events;
 using AikoOS.Behavior.Scheduler;
-using AikoOS.Behavior.Brain;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -10,16 +10,17 @@ namespace AikoOS.Behavior.Hosting;
 public sealed class BehaviorHostedService : BackgroundService
 {
     private readonly IBehaviorEventBus _eventBus;
+    private readonly IBehaviorEngine _behaviorEngine;
     private readonly IBehaviorScheduler _scheduler;
     private readonly ILogger<BehaviorHostedService> _logger;
-    private readonly IBehaviorEngine _behaviorEngine;
+
     private readonly List<IDisposable> _subscriptions = new();
 
     public BehaviorHostedService(
-    IBehaviorEventBus eventBus,
-    IBehaviorEngine behaviorEngine,
-    IBehaviorScheduler scheduler,
-    ILogger<BehaviorHostedService> logger)
+        IBehaviorEventBus eventBus,
+        IBehaviorEngine behaviorEngine,
+        IBehaviorScheduler scheduler,
+        ILogger<BehaviorHostedService> logger)
     {
         _eventBus = eventBus;
         _behaviorEngine = behaviorEngine;
@@ -35,26 +36,29 @@ public sealed class BehaviorHostedService : BackgroundService
 
         SubscribeToBehaviorEvents();
 
-        PublishStartupEvent();
+        await PublishStartupEventAsync(stoppingToken);
 
         await _scheduler.StartAsync(stoppingToken);
     }
 
-    private void PublishStartupEvent()
+    private async Task PublishStartupEventAsync(
+        CancellationToken cancellationToken)
     {
         _logger.LogInformation(
             "Publishing startup behavior event.");
 
-        _eventBus.Publish(
-            new BehaviorEvent
-            {
-                Name = BehaviorEventNames.Startup
-            });
+        BehaviorEvent startupEvent = new()
+        {
+            Name = BehaviorEventNames.Startup
+        };
+
+        await HandleBehaviorEventAsync(
+            startupEvent,
+            cancellationToken);
     }
 
     private void SubscribeToBehaviorEvents()
     {
-        Subscribe(BehaviorEventNames.Startup);
         Subscribe(BehaviorEventNames.UserIdle);
         Subscribe(BehaviorEventNames.UserActive);
 
@@ -67,20 +71,31 @@ public sealed class BehaviorHostedService : BackgroundService
         IDisposable subscription =
             _eventBus.Subscribe(
                 eventName,
-                HandleBehaviorEvent);
+                behaviorEvent =>
+                {
+                    _ = HandleBehaviorEventAsync(
+                        behaviorEvent,
+                        CancellationToken.None);
+                });
 
         _subscriptions.Add(subscription);
     }
 
-    private void HandleBehaviorEvent(
-    BehaviorEvent behaviorEvent)
+    private async Task HandleBehaviorEventAsync(
+        BehaviorEvent behaviorEvent,
+        CancellationToken cancellationToken)
     {
         try
         {
-            _behaviorEngine
-                .HandleEventAsync(behaviorEvent)
-                .GetAwaiter()
-                .GetResult();
+            await _behaviorEngine.HandleEventAsync(
+                behaviorEvent,
+                cancellationToken);
+        }
+        catch (OperationCanceledException)
+            when (cancellationToken.IsCancellationRequested)
+        {
+            _logger.LogInformation(
+                "Behavior event handling was cancelled.");
         }
         catch (Exception exception)
         {

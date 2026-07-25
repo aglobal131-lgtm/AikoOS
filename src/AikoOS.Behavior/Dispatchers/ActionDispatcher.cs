@@ -1,5 +1,6 @@
-using AikoOS.Behavior.Queues;
+using AikoOS.Behavior.Actions;
 using AikoOS.Behavior.Executors;
+using AikoOS.Behavior.Queues;
 using Microsoft.Extensions.Logging;
 
 namespace AikoOS.Behavior.Dispatchers;
@@ -7,41 +8,75 @@ namespace AikoOS.Behavior.Dispatchers;
 public sealed class ActionDispatcher : IActionDispatcher
 {
     private readonly IActionQueue _actionQueue;
-
-    private readonly IEnumerable<IActionExecutor> _executors;
+    private readonly IReadOnlyList<IActionExecutor> _executors;
     private readonly ILogger<ActionDispatcher> _logger;
 
     public ActionDispatcher(
-    IActionQueue actionQueue,
-    IEnumerable<IActionExecutor> executors,
-    ILogger<ActionDispatcher> logger)
+        IActionQueue actionQueue,
+        IEnumerable<IActionExecutor> executors,
+        ILogger<ActionDispatcher> logger)
     {
+        ArgumentNullException.ThrowIfNull(actionQueue);
+        ArgumentNullException.ThrowIfNull(executors);
+        ArgumentNullException.ThrowIfNull(logger);
+
         _actionQueue = actionQueue;
-        _executors = executors;
+        _executors = executors.ToArray();
         _logger = logger;
     }
 
     public async Task DispatchAsync(
-    CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default)
     {
-        while (_actionQueue.TryDequeue(out var action))
-        {
-            IActionExecutor? executor =
-                _executors.FirstOrDefault(
-                    x => x.CanExecute(action!));
+        cancellationToken.ThrowIfCancellationRequested();
 
-            if (executor is null)
+        while (_actionQueue.TryDequeue(
+                   out CharacterAction? action))
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            if (action is null)
             {
                 _logger.LogWarning(
-                    "No executor found for action {Action}",
-                    action!.Name);
+                    "Behavior action queue returned a null action.");
 
                 continue;
             }
 
-            await executor.ExecuteAsync(
-                action!,
-                cancellationToken);
+            IActionExecutor? executor =
+                _executors.FirstOrDefault(
+                    candidate =>
+                        candidate.CanExecute(action));
+
+            if (executor is null)
+            {
+                _logger.LogWarning(
+                    "No executor found for behavior action {ActionName}.",
+                    action.Name);
+
+                continue;
+            }
+
+            try
+            {
+                await executor.ExecuteAsync(
+                        action,
+                        cancellationToken)
+                    .ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+                when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(
+                    exception,
+                    "Executor {ExecutorName} failed for behavior action {ActionName}.",
+                    executor.GetType().Name,
+                    action.Name);
+            }
         }
     }
 }
