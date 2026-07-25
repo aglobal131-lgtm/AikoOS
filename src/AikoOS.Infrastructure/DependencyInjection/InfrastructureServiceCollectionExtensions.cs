@@ -1,6 +1,7 @@
+using AikoOS.Core.Interfaces;
 using AikoOS.Core.Services;
+using AikoOS.Infrastructure.Repositories;
 using AikoOS.Infrastructure.Settings;
-using AikoOS.Infrastructure.Communication;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AikoOS.Infrastructure.DependencyInjection;
@@ -11,9 +12,7 @@ public static class InfrastructureServiceCollectionExtensions
         this IServiceCollection services)
     {
         services.AddSingleton<IUserSettingsService, JsonUserSettingsService>();
-
-        services.AddSingleton<IUnityTransport, NamedPipeUnityTransport>();
-        services.AddSingleton<UnityCommandService>();
+        services.AddScoped<IChatRepository, PostgreSqlChatRepository>();
 
         return services;
     }

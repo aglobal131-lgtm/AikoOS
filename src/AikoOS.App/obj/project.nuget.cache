@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "uuAfZHgCt/E=",
+  "dgSpecHash": "zR2/wvbLcPo=",
   "success": true,
   "projectFilePath": "D:\\Downloads\\AikoOS\\src\\AikoOS.App\\AikoOS.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aglob\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.2\\communitytoolkit.mvvm.8.4.2.nupkg.sha512",
+    "C:\\Users\\aglob\\.nuget\\packages\\dotnetenv\\3.2.0\\dotnetenv.3.2.0.nupkg.sha512",
     "C:\\Users\\aglob\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.10\\microsoft.extensions.configuration.10.0.10.nupkg.sha512",
     "C:\\Users\\aglob\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.10\\microsoft.extensions.configuration.abstractions.10.0.10.nupkg.sha512",
     "C:\\Users\\aglob\\.nuget\\packages\\microsoft.extensions.configuration.binder\\10.0.10\\microsoft.extensions.configuration.binder.10.0.10.nupkg.sha512",
@@ -39,7 +40,8 @@
     "C:\\Users\\aglob\\.nuget\\packages\\serilog.extensions.hosting\\10.0.0\\serilog.extensions.hosting.10.0.0.nupkg.sha512",
     "C:\\Users\\aglob\\.nuget\\packages\\serilog.extensions.logging\\10.0.0\\serilog.extensions.logging.10.0.0.nupkg.sha512",
     "C:\\Users\\aglob\\.nuget\\packages\\serilog.sinks.debug\\3.0.0\\serilog.sinks.debug.3.0.0.nupkg.sha512",
-    "C:\\Users\\aglob\\.nuget\\packages\\serilog.sinks.file\\7.0.0\\serilog.sinks.file.7.0.0.nupkg.sha512"
+    "C:\\Users\\aglob\\.nuget\\packages\\serilog.sinks.file\\7.0.0\\serilog.sinks.file.7.0.0.nupkg.sha512",
+    "C:\\Users\\aglob\\.nuget\\packages\\superpower\\3.0.0\\superpower.3.0.0.nupkg.sha512"
   ],
   "logs": []
 }

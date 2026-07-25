@@ -1,15 +1,17 @@
 ﻿using System.Windows;
+using System.IO;
 using AikoOS.App.Extensions;
 using AikoOS.App.Services;
 using AikoOS.App.ViewModels;
 using AikoOS.Behavior;
-using AikoOS.Infrastructure.Communication;
 using AikoOS.Live2D.Services;
 using AikoOS.App.Avatar;
+using DotNetEnv;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
 
 namespace AikoOS.App;
 
@@ -17,77 +19,82 @@ public partial class App : Application
 {
     private IHost? _host;
 
-    protected override async void OnStartup(
-        StartupEventArgs e)
+    private void OnDispatcherUnhandledException(
+    object sender,
+    System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
     {
+        MessageBox.Show(
+            e.Exception.ToString(),
+            "AikoOS crashed",
+            MessageBoxButton.OK,
+            MessageBoxImage.Error);
+
+        e.Handled = true;
+    }
+
+    protected override async void OnStartup(StartupEventArgs e)
+    {
+
+        DispatcherUnhandledException += OnDispatcherUnhandledException;
         base.OnStartup(e);
 
         try
         {
-            HostApplicationBuilderSettings settings = new()
+            string envPath = Path.GetFullPath(
+                Path.Combine(
+                    AppContext.BaseDirectory,
+                    "..",
+                    "..",
+                    "..",
+                    "..",
+                    "..",
+                    ".env"));
+
+            if (!File.Exists(envPath))
+            {
+                throw new FileNotFoundException(
+                    $"Không tìm thấy file .env tại:\n{envPath}");
+            }
+
+            Env.Load(envPath);
+
+            var settings = new HostApplicationBuilderSettings
             {
                 ContentRootPath = AppContext.BaseDirectory
             };
 
-            HostApplicationBuilder builder =
-                Host.CreateApplicationBuilder(settings);
+            var builder = Host.CreateApplicationBuilder(settings);
 
-            builder.Configuration.AddJsonFile(
-                path: "config/config.json",
-                optional: false,
-                reloadOnChange: true);
+            builder.Configuration
+                .AddJsonFile(
+                    "config/config.json",
+                    optional: false,
+                    reloadOnChange: true)
+                .AddEnvironmentVariables();
 
             builder.AddAikoOSLogging();
+
+            builder.Services.AddSingleton<
+    AikoOS.Core.Services.IAikoStateService,
+    AikoOS.Behavior.Services.AikoStateService>();
 
             builder.Services.AddAikoOSApplication(
                 builder.Configuration);
 
-            builder.Services.AddBehavior(
-                builder.Configuration);
-
-            // Unity communication
-            builder.Services.AddSingleton<
-                IUnityTransport,
-                NamedPipeUnityTransport>();
-
-            builder.Services.AddSingleton<
-                UnityCommandService>();
-
-            builder.Services.AddSingleton<
-                UnityControlViewModel>();
-
             _host = builder.Build();
-
-            _host.Services.GetRequiredService<
-                AvatarStateBridge>();
-
-            _host.Services.GetRequiredService<
-                BehaviorAvatarSyncService>();
 
             await _host.StartAsync();
 
-            ILogger<App> logger =
-                _host.Services.GetRequiredService<
-                    ILogger<App>>();
+            var mainWindow =
+                _host.Services.GetRequiredService<MainWindow>();
 
-            logger.LogInformation(
-                "AikoOS is starting in {EnvironmentName}.",
-                builder.Environment.EnvironmentName);
+            ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
-            MainWindow mainWindow =
-                _host.Services.GetRequiredService<
-                    MainWindow>();
+            mainWindow.Closed += MainWindow_Closed;
 
             MainWindow = mainWindow;
 
-            mainWindow.Closed +=
-                MainWindow_Closed;
-
             mainWindow.Show();
-            mainWindow.Activate();
-
-            logger.LogInformation(
-    "AikoOS MainWindow was displayed successfully.");
         }
         catch (Exception exception)
         {

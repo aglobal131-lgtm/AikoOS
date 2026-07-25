@@ -12,7 +12,7 @@ using AikoOS.Runtime.DependencyInjection;
 using AikoOS.Live2D.Services;
 using AikoOS.Core.Services;
 using AikoOS.App.Avatar;
-using AikoOS.Behavior.Emotion;
+using AikoOS.Behavior;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,14 +27,15 @@ public static class ServiceCollectionExtensions
         services.AddAikoOSInfrastructure();
         services.AddAikoOSAI(configuration);
         services.AddAikoOSMemory(configuration);
+        services.AddBehavior(configuration);
         services.AddAikoOSRuntime();
         services.AddTransient<ChatViewModel>();
+        services.AddTransient<ChatView>();
 
         services.Configure<ApplicationOptions>(
             configuration.GetSection(
                 ApplicationOptions.SectionName));
 
-        services.AddSingleton<IChatRepository, PostgreSqlChatRepository>();
         services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<HomeViewModel>();
@@ -49,8 +50,6 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<AvatarStateBridge>();
         services.AddSingleton<BehaviorAvatarSyncService>();
         services.AddSingleton<IAvatarStateMapper, AvatarStateMapper>();
-
-        services.AddSingleton<IEmotionEngine, EmotionEngine>();
 
 
         return services;

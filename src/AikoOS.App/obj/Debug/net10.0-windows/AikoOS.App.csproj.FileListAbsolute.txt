@@ -744,6 +744,7 @@ D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\AikoOS.App.runtimec
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\AikoOS.App.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\AikoOS.App.pdb
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\CommunityToolkit.Mvvm.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\DotNetEnv.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.Binder.dll
@@ -778,6 +779,7 @@ D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Serilog.Extensions.
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Serilog.Extensions.Logging.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Serilog.Sinks.Debug.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Serilog.Sinks.File.dll
+D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Superpower.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\AikoOS.AI.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\AikoOS.Behavior.dll
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\AikoOS.Core.dll
@@ -799,7 +801,6 @@ D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Microsoft.Web.WebVi
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Microsoft.Web.WebView2.WinForms.xml
 D:\Downloads\AikoOS\src\AikoOS.App\bin\Debug\net10.0-windows\Microsoft.Web.WebView2.Wpf.xml
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\AikoOS.App.csproj.AssemblyReference.cache
-D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\MainWindow.baml
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\Views\Brain\BrainView.baml
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\Views\ChatView.baml
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\Views\HomeView.baml
@@ -817,6 +818,7 @@ D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\GeneratedInternalTy
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\AikoOS.App_MarkupCompile.cache
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\AikoOS.App_MarkupCompile.lref
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\App.baml
+D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\MainWindow.baml
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\AikoOS.App.g.resources
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\AikoOS.App.GeneratedMSBuildEditorConfig.editorconfig
 D:\Downloads\AikoOS\src\AikoOS.App\obj\Debug\net10.0-windows\AikoOS.App.AssemblyInfoInputs.cache
