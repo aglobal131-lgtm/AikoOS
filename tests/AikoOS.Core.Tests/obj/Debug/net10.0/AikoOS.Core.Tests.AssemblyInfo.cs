@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AikoOS.Core.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae45a0acdc3efef4ca1b6dcfbca00a9accff6af0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+274862047f87c05fb23d33a7007faf18d1cc7b9b")]
 [assembly: System.Reflection.AssemblyProductAttribute("AikoOS.Core.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AikoOS.Core.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -5,6 +5,9 @@ using AikoOS.Core.Interfaces;
 using AikoOS.Core.Models;
 using AikoOS.Runtime.Brain;
 using AikoOS.Runtime.Brain.Models;
+using AikoOS.Behavior.Context;
+using AikoOS.Behavior.Emotions;
+using AikoOS.Behavior.State;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -15,6 +18,7 @@ public partial class ChatViewModel : ObservableObject
 
     private readonly IBrainRequestService _brainRequestService;
     private readonly IChatRepository _chatRepository;
+    private readonly ICharacterContext _characterContext;
 
     private CancellationTokenSource? _cancellationTokenSource;
     private Guid _conversationId;
@@ -35,10 +39,12 @@ public partial class ChatViewModel : ObservableObject
 
     public ChatViewModel(
     IChatRepository chatRepository,
-    IBrainRequestService brainRequestService)
+    IBrainRequestService brainRequestService,
+    ICharacterContext characterContext)
     {
         _brainRequestService = brainRequestService;
         _chatRepository = chatRepository;
+        _characterContext = characterContext;
     }
 
     public async Task InitializeAsync(
@@ -131,6 +137,8 @@ public partial class ChatViewModel : ObservableObject
         IsSending = true;
         StatusMessage = "Aiko đang trả lời...";
 
+        _characterContext.Update(CharacterStateNames.Listening, EmotionNames.Curious);
+
         Messages.Add(
             new ChatMessageItem
             {
@@ -163,6 +171,8 @@ public partial class ChatViewModel : ObservableObject
                     ConversationHistory = conversation
                 };
 
+            _characterContext.Update(CharacterStateNames.Thinking, EmotionNames.Curious);
+
             BrainResponse response =
                 await _brainRequestService.ProcessAsync(
                     brainRequest,
@@ -170,6 +180,9 @@ public partial class ChatViewModel : ObservableObject
 
             if (response.Success)
             {
+
+                _characterContext.Update(CharacterStateNames.Speaking, EmotionNames.Happy);
+
                 string assistantMessage =
                     response.Speech.Trim();
 
@@ -194,6 +207,9 @@ public partial class ChatViewModel : ObservableObject
             }
             else
             {
+
+                _characterContext.Update(CharacterStateNames.Idle, EmotionNames.Sad);
+
                 Messages.Add(
                     new ChatMessageItem
                     {
@@ -207,10 +223,18 @@ public partial class ChatViewModel : ObservableObject
         }
         catch (OperationCanceledException)
         {
+            _characterContext.Update(
+                CharacterStateNames.Idle,
+                EmotionNames.Neutral);
+
             StatusMessage = "Đã hủy yêu cầu";
         }
         catch (Exception exception)
         {
+            _characterContext.Update(
+                CharacterStateNames.Idle,
+                EmotionNames.Sad);
+
             Messages.Add(
                 new ChatMessageItem
                 {
@@ -224,6 +248,10 @@ public partial class ChatViewModel : ObservableObject
         finally
         {
             IsSending = false;
+
+            _characterContext.Update(
+                CharacterStateNames.Idle,
+                EmotionNames.Neutral);
         }
     }
 
