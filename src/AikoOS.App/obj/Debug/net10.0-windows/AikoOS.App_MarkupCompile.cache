@@ -1,5 +1,5 @@
 ﻿AikoOS.App
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_O
 D:\Downloads\AikoOS\src\AikoOS.App\App.xaml
 6138018962
 3811268548462
-29-763471211
+31284317301
 2512058991668
 MainWindow.xaml;Views\Brain\BrainView.xaml;Views\ChatView.xaml;Views\HomeView.xaml;Views\MemoryPage.xaml;Views\SettingsPage.xaml;
 
-False
+True
 

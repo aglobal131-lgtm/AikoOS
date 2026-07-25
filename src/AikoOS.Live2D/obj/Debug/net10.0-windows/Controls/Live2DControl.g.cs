@@ -60,7 +60,7 @@ namespace AikoOS.Live2D.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AikoOS.Live2D;component/controls/live2dcontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AikoOS.Live2D;V1.0.0.0;component/controls/live2dcontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\Live2DControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,3 +1,15 @@
+# Nếu là dự án Node.js / React / Vue / Next.js
+node_modules/
+dist/
 .env
-.env.*
-!.env.example
+
+# Nếu là dự án Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+
+# Nếu là dự án nói chung (File hệ điều hành và IDE)
+.DS_Store
+.vscode/

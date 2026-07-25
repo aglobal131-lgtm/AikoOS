@@ -51,7 +51,7 @@ namespace AikoOS.App.Views.Brain {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AikoOS.App;component/views/brain/brainview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AikoOS.App;V1.0.0.0;component/views/brain/brainview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Brain\BrainView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
